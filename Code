@@ -1,0 +1,169 @@
+#include "pitches.h"
+
+int speaker =9;
+int freq = 0; //frequency of tone output
+int sensorValue; // variable to capture sensor reading, can be any analog input
+                // fsr, ldr, potentiometer, phototransistor, etc
+
+int sensorPin = A0; // Sensor is connected to A0 on Arduino
+
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(speaker, OUTPUT); //speaker pin as output
+
+}
+
+void loop() {
+  int reading = analogRead(A0); //read the sensor, store the value of the sensor
+
+  freq = map(reading, 0 ,1023, 100, 5000); // map the range of the sensor value to a range that works for your audio
+  
+  tone(speaker , NOTE_C5);
+  delay(1600);
+//
+
+  tone(speaker , NOTE_GS4);
+  delay(1600);
+
+
+  tone(speaker , NOTE_AS4);
+  delay(1600);
+
+
+   tone(speaker , NOTE_GS4);
+  delay(1200);
+  
+
+  tone(speaker , NOTE_G4);
+  delay(400);
+
+  tone(speaker , NOTE_F4);
+  delay(1200);
+
+
+tone(speaker , NOTE_G4);
+  delay(400);
+
+// row break
+
+  tone(speaker , NOTE_GS4);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_GS4);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_C5);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_C5);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_C5);
+  delay(200);
+
+
+  tone(speaker , NOTE_GS4);
+  delay(200);
+
+  tone(speaker , NOTE_AS4);
+  delay(200);
+
+  tone(speaker , NOTE_C5);
+  delay(1600);
+
+  noTone(speaker);
+  delay(100);
+
+  tone(speaker , NOTE_C5);
+  delay(1200);
+
+  tone(speaker , NOTE_CS5);
+  delay(400);
+  
+///break
+
+  tone(speaker , NOTE_DS5);
+  delay(1600);
+
+  tone(speaker , NOTE_CS5);
+  delay(200);
+  
+  tone(speaker , NOTE_C5);
+  delay(1200);
+
+  tone(speaker , NOTE_AS4);
+  delay(400);
+
+  tone(speaker , NOTE_GS4);
+  delay(1600);
+
+  tone(speaker , NOTE_AS4);
+  delay(800);
+
+  tone(speaker , NOTE_C5);
+  delay(800);
+
+/////line break
+
+
+  tone(speaker , NOTE_CS5);
+  delay(1800);
+
+  tone(speaker , NOTE_DS5);
+  delay(200);
+
+
+  tone(speaker , NOTE_F5);
+  delay(200);
+
+  tone(speaker , NOTE_CS5);
+  delay(400);
+
+  tone(speaker , NOTE_C5);
+  delay(400);
+
+  noTone(speaker);
+  delay(50);
+
+  tone(speaker , NOTE_C5);
+  delay(1600);
+
+  noTone(speaker);
+  delay(5000);
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  Serial.print("Analog Reading:");
+  Serial.print(reading);
+  Serial.print("frequency");
+  Serial.print(freq);
+  
+
+}
