@@ -1,0 +1,154 @@
+#include "pitches.h"
+
+int pb1 = 0;  // previous button state variable for button 1
+int speaker = 9; // speaker connected to pin 9
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(2, INPUT); // button 1 connected to pin 2
+ 
+  pinMode(speaker, OUTPUT); // speaker pin as output
+}
+
+void loop() {
+  
+  int b1state = digitalRead(2); // current state of 1st button
+ 
+  
+  if (b1state == 0 && pb1 == 1) { // button 1 pressed, play the melody
+    
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  //
+  
+    tone(speaker , NOTE_GS4);
+    delay(1600);
+  
+  
+    tone(speaker , NOTE_AS4);
+    delay(1600);
+  
+  
+     tone(speaker , NOTE_GS4);
+    delay(1200);
+    
+  
+    tone(speaker , NOTE_G4);
+    delay(400);
+  
+    tone(speaker , NOTE_F4);
+    delay(1200);
+  
+  
+    tone(speaker , NOTE_G4);
+    delay(400);
+  
+  // row break
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  
+    noTone(speaker);
+    delay(100);
+  
+    tone(speaker , NOTE_C5);
+    delay(1200);
+  
+    tone(speaker , NOTE_CS5);
+    delay(400);
+    
+  ///break
+  
+    tone(speaker , NOTE_DS5);
+    delay(1600);
+  
+    tone(speaker , NOTE_CS5);
+    delay(200);
+    
+    tone(speaker , NOTE_C5);
+    delay(1200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(400);
+  
+    tone(speaker , NOTE_GS4);
+    delay(1600);
+  
+    tone(speaker , NOTE_AS4);
+    delay(800);
+  
+    tone(speaker , NOTE_C5);
+    delay(800);
+  
+  /////line break
+  
+  
+    tone(speaker , NOTE_CS5);
+    delay(1800);
+  
+    tone(speaker , NOTE_DS5);
+    delay(200);
+  
+  
+    tone(speaker , NOTE_F5);
+    delay(200);
+  
+    tone(speaker , NOTE_CS5);
+    delay(400);
+  
+    tone(speaker , NOTE_C5);
+    delay(400);
+  
+    noTone(speaker);
+    delay(50);
+  
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  
+    noTone(speaker);
+    delay(5000);
+    pb1 = 0;
+    }
+  
+  if (b1state == 1 && pb1 == 0) {
+    pb1 = 1;
+  }
+}
