@@ -1,0 +1,169 @@
+#include "pitches.h"
+
+int pb1 = 0;  // previous button state variable for button 1
+int pb2 = 0;  // previous button state variable for button 2
+int speaker = 9; // speaker connected to pin 9
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(2, INPUT); // button 1 connected to pin 2
+  pinMode(3, INPUT); // button 2 connected to pin 3
+  pinMode(speaker, OUTPUT); // speaker pin as output
+}
+
+void loop() {
+  
+  int b1state = digitalRead(2); // current state of 1st button
+  int b2state = digitalRead(3); // current state of 2nd button
+  
+  if (b1state == 0 && pb1 == 1) { // button 1 pressed, play the melody
+    
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  //
+  
+    tone(speaker , NOTE_GS4);
+    delay(1600);
+  
+  
+    tone(speaker , NOTE_AS4);
+    delay(1600);
+  
+  
+     tone(speaker , NOTE_GS4);
+    delay(1200);
+    
+  
+    tone(speaker , NOTE_G4);
+    delay(400);
+  
+    tone(speaker , NOTE_F4);
+    delay(1200);
+  
+  
+    tone(speaker , NOTE_G4);
+    delay(400);
+  
+  // row break
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(200);
+  
+  
+    tone(speaker , NOTE_GS4);
+    delay(200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(200);
+  
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  
+    noTone(speaker);
+    delay(100);
+  
+    tone(speaker , NOTE_C5);
+    delay(1200);
+  
+    tone(speaker , NOTE_CS5);
+    delay(400);
+    
+  ///break
+  
+    tone(speaker , NOTE_DS5);
+    delay(1600);
+  
+    tone(speaker , NOTE_CS5);
+    delay(200);
+    
+    tone(speaker , NOTE_C5);
+    delay(1200);
+  
+    tone(speaker , NOTE_AS4);
+    delay(400);
+  
+    tone(speaker , NOTE_GS4);
+    delay(1600);
+  
+    tone(speaker , NOTE_AS4);
+    delay(800);
+  
+    tone(speaker , NOTE_C5);
+    delay(800);
+  
+  /////line break
+  
+  
+    tone(speaker , NOTE_CS5);
+    delay(1800);
+  
+    tone(speaker , NOTE_DS5);
+    delay(200);
+  
+  
+    tone(speaker , NOTE_F5);
+    delay(200);
+  
+    tone(speaker , NOTE_CS5);
+    delay(400);
+  
+    tone(speaker , NOTE_C5);
+    delay(400);
+  
+    noTone(speaker);
+    delay(50);
+  
+    tone(speaker , NOTE_C5);
+    delay(1600);
+  
+    noTone(speaker);
+    delay(5000);
+    pb1 = 0;
+    }
+  
+  if (b1state == 1 && pb1 == 0) {
+    pb1 = 1;
+  }
+
+  if (b2state == 0 && pb2 == 1) { // button 2
+    noTone(speaker); // turn the speaker off
+    delay(5000);
+    pb2 = 0;
+  }
+  if (b2state == 1 && pb2 == 0) {
+    pb2 = 1;
+  }
+
+  Serial.print("Button 1: ");
+  Serial.print(b1state);
+  Serial.print("Button 2: ");
+  Serial.print(b2state);
+}
